@@ -1,0 +1,53 @@
+/* common props */
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+button {
+  width: fit-content;
+  height: 40px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+img {
+  height: 7vh;
+  width: 7vh;
+}
+/* targeted props */
+.header {
+  height: 7vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.header button {
+  align-self: end;
+  transition: 1s;
+}
+
+.startGame {
+  background-color: rgb(164, 252, 223);
+}
+.resetGame {
+  background-color: rgb(255, 180, 218);
+}
+
+button:hover {
+  background-color: rgb(255, 88, 88);
+  transition: 0.5s;
+}
+
+.Logo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: center;
+  column-gap: 20px;
+}
+
+.Logo p {
+  font-size: 1.5rem;
+  margin: auto;
+  text-decoration: line-through;
+}
