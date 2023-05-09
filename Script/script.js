@@ -1,4 +1,3 @@
-// const element = document.querySelector('[class="1 2"]');
 const game = (() => {
   const player1 = {
     name: "Player 1",
@@ -155,7 +154,6 @@ const game = (() => {
     checkHorizontally(col);
     checkDiagonally(row, col);
     totalCellFilled += 1;
-    console.log(totalCellFilled, winner);
     // check for draw
     if (totalCellFilled === 9 && !winner) {
       declareResult();
