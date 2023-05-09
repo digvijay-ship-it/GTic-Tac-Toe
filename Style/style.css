@@ -1,8 +1,13 @@
 /* common props */
-
+html {
+  height: 100%;
+}
 body {
+  height: inherit;
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  display: grid;
+  grid-template-rows: 1fr 14fr;
 }
 
 button {
@@ -17,7 +22,7 @@ img {
 }
 /* targeted props */
 .header {
-  height: 7vh;
+  /* height: 7vh; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
@@ -50,4 +55,54 @@ button:hover {
   font-size: 1.5rem;
   margin: auto;
   text-decoration: line-through;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: minmax(400px, 1fr);
+  grid-template-columns: minmax(400px, 1fr);
+  background-color: cadetblue;
+}
+/*  */
+/* transition: 2s; */
+/*  */
+.gameBoardDiv {
+  align-self: center;
+  justify-self: center;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  width: 400px;
+  height: 400px;
+  background-color: aqua;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.item {
+  background-color: blue;
+}
+
+.gameBoardDiv > div {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  border-radius: 20px;
+}
+
+.gameBoardDiv > div:hover {
+  background-color: yellow;
+  transform: scale(1.2);
+}
+
+.winner {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  font-size: 4rem;
+  background-color: rgb(194, 94, 94, 0.9);
 }
