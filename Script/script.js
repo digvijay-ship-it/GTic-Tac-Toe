@@ -17,6 +17,13 @@ const game = (() => {
   let winner;
   let totalCellFilled = 0;
 
+  const resetGameInitializer = () => {
+    playerTurnFlag = player1;
+    winPositionCounter = 0;
+    totalCellFilled = 0;
+    winner = null;
+  };
+
   //   make dom reset
   const restGameBoardInDom = () => {
     document.querySelector(".content").innerHTML = "";
@@ -49,7 +56,6 @@ const game = (() => {
       `;
     }
 
-    // check for winner
     winnerChecker(i, j);
     // switch player
     playerTurnFlag = playerTurnFlag === player1 ? player2 : player1;
@@ -67,11 +73,6 @@ const game = (() => {
     }
     document.querySelector(".content").appendChild(winnerDeclareNode);
     playerTurnFlag = player1;
-
-    winPositionCounter = 0;
-    winner = null;
-    totalCellFilled = 0;
-    playerTurnFlag = player1;
   };
   const checkVertically = (row) => {
     for (let j = 0; j < 3; j += 1) {
@@ -79,7 +80,6 @@ const game = (() => {
         // if all near by horizontal obj same
         winPositionCounter += 1;
         if (winPositionCounter === 3) {
-          // someone Won!!!
           winner = playerTurnFlag;
           declareResult();
         }
@@ -97,7 +97,6 @@ const game = (() => {
         // if all near by horizontal obj same
         winPositionCounter += 1;
         if (winPositionCounter === 3) {
-          // someone Won!!!
           winner = playerTurnFlag;
           declareResult();
         }
@@ -154,7 +153,6 @@ const game = (() => {
     checkHorizontally(col);
     checkDiagonally(row, col);
     totalCellFilled += 1;
-    // check for draw
     if (totalCellFilled === 9 && !winner) {
       declareResult();
     }
@@ -183,15 +181,15 @@ const game = (() => {
   };
 
   const startGame = () => {
-    // make start button disabled
     const startButton = document.querySelector(".startGame");
-    startButton.disabled = true; // to disable the button
-    // and reset button enable
+    startButton.disabled = true; // to disable the  start button
+
     const resetButton = document.querySelector(".resetGame");
     resetButton.disabled = false;
     resetGameBoardObj();
     restGameBoardInDom();
     addEventListenerToGameBoardCell();
+    resetGameInitializer();
   };
   const resetGame = () => {
     const startButton = document.querySelector(".startGame");
@@ -202,8 +200,8 @@ const game = (() => {
     resetGameBoardObj();
     restGameBoardInDom();
     addEventListenerToGameBoardCell();
+    resetGameInitializer();
   };
-
   return {
     startGame,
     resetGame,
